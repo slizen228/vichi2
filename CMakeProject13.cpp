@@ -31,15 +31,16 @@ int Jacobi(int N, double** A, double* b, double* X,double eps){
 }
 
 bool Convergence(int N, double** A) {
-	int sum=0;
+	system("chcp 65001");
+	double sum1=0;
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
 			if (i != j) {
-				sum += fabs(A[i][j]);
+				sum1 += fabs(A[i][j]);
 			}
 		}
-		if (fabs(A[i][i]) > sum) {
-			sum = 0;
+		if (fabs(A[i][i]) > sum1) {
+			sum1 = 0;
 			continue;
 		}
 		else {
@@ -72,11 +73,10 @@ int main()
 			cin >> A[i][j];
 		}
 	}
-	cout << "Hello CMake." << endl;
-	if (!Convergence(n,A)) {
-		cout << "метод Якоби не сходится";
-		return 0;
-	}
+	//if (!Convergence(n,A)) {
+		//cout << "метод Якоби не сходится";
+		//return 0;
+	//}
 	cout <<"steps:" << Jacobi(n, A, b, x, eps) << endl<<"x:"<<endl;
 	for (int i = 0; i < n; i++) {
 		cout << x[i] << endl;
